@@ -1,9 +1,15 @@
 import { test, expect } from '@playwright/test';
 
 test('basic test', async ({ page }) => {
+  // Pause on the following line.
+  await page.pause();
+
   await page.goto('https://syncross.vercel.app/');
   await expect(page).toHaveTitle('SynCROSS');
 
-  await page.locator('text=My Works').first().click();
+  const text = 'M Works'; // ! For Retry Test To Get 'trace.zip'
+  // const text = 'My Works';
+
+  await page.locator(`text=${text}`).first().click();
   await expect(page).toHaveTitle('My Works');
 });

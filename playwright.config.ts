@@ -4,19 +4,17 @@ import { PlaywrightTestConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-
   testDir: './tests',
 
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,
 
   expect: {
-
     /**
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 5000,
   },
 
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -33,7 +31,6 @@ const config: PlaywrightTestConfig = {
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
 
@@ -41,7 +38,11 @@ const config: PlaywrightTestConfig = {
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    // * 'off' - Do not record a trace.
+    // * 'on' - Record a trace for each test.
+    // * 'retain-on-failure' - Record a trace for each test, but remove it from successful test runs.
+    // * 'on-first-retry' - Record a trace only when retrying a test for the first time.
+    trace: 'on-first-retry', // * Or `trace: 'retain-on-failure'` if you do not enable retries but still want traces for failed tests.
   },
 
   /* Configure projects for major browsers */

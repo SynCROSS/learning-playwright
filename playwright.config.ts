@@ -42,7 +42,7 @@ const config: PlaywrightTestConfig = {
     // * 'on' - Record a trace for each test.
     // * 'retain-on-failure' - Record a trace for each test, but remove it from successful test runs.
     // * 'on-first-retry' - Record a trace only when retrying a test for the first time.
-    trace: 'on-first-retry', // * Or `trace: 'retain-on-failure'` if you do not enable retries but still want traces for failed tests.
+    trace: 'on', // * Or `trace: 'retain-on-failure'` if you do not enable retries but still want traces for failed tests.
   },
 
   /* Configure projects for major browsers */

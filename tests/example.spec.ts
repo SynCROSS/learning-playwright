@@ -7,7 +7,7 @@ test('basic test', async ({ page }) => {
   await page.goto('https://syncross.vercel.app/');
   await expect(page).toHaveTitle('SynCROSS');
 
-  const text = 'M Works'; // ! For Retry Test To Get 'trace.zip'
+  const text = 'My Works';
   // const text = 'My Works';
 
   await page.locator(`text=${text}`).first().click();

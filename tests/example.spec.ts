@@ -1,15 +1,27 @@
 import { test, expect } from '@playwright/test';
 
-test('basic test', async ({ page }) => {
-  // Pause on the following line.
-  await page.pause();
-
+test('Make Test Using Codegen', async ({ page }) => {
+  // Go to https://syncross.vercel.app/
   await page.goto('https://syncross.vercel.app/');
-  await expect(page).toHaveTitle('SynCROSS');
 
-  const text = 'My Works';
-  // const text = 'My Works';
+  // Click text=About
+  await page.click('text=About');
+  await expect(page).toHaveURL('https://syncross.vercel.app/About');
 
-  await page.locator(`text=${text}`).first().click();
-  await expect(page).toHaveTitle('My Works');
+  // Click text=My Works
+  await page.click('text=My Works');
+  await expect(page).toHaveURL('https://syncross.vercel.app/Work');
+
+  // Click text=SynCROSS
+  const [page1] = await Promise.all([
+    page.waitForEvent('popup'),
+    page.click('text=SynCROSS'),
+  ]);
+
+  // Click svg
+  await page1.click('svg');
+  await expect(page1).toHaveURL('https://github.com/');
+
+  // Close page
+  await page1.close();
 });

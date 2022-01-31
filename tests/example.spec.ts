@@ -25,3 +25,20 @@ test('Make Test Using Codegen', async ({ page }) => {
   // Close page
   await page1.close();
 });
+
+test.only(`Test 'only' Annotations`, async ({ page }) => {
+  // Go to https://syncross.vercel.app/
+  await page.goto('https://syncross.vercel.app/');
+
+  // Click text=About
+  await page.click('text=About');
+  await expect(page).toHaveURL('https://syncross.vercel.app/About');
+
+  // Click text=My Works
+  await page.click('text=My Works');
+  await expect(page).toHaveURL('https://syncross.vercel.app/Work');
+
+  // Click text=Home
+  await page.click('text=Home');
+  await expect(page).toHaveURL('https://syncross.vercel.app/');
+});

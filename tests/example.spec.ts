@@ -20,7 +20,7 @@ test('Make Test Using Codegen', async ({ page }) => {
   await page.close();
 });
 
-test.only(`Test 'only' Annotations`, async ({ page }) => {
+test.skip(`Test 'skip' Annotations`, async ({ page }) => {
   // Go to https://syncross.vercel.app/
   await page.goto('https://syncross.vercel.app/');
 

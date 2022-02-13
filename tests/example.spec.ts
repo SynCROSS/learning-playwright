@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test';
 
+// * If 'npx playwright test --grep @tag' Executed, Only Tagged Test Be Executed
+// * Also 'npx playwright test --grep-invert @tag' Executed, Only Tagged Test Be Skipped
+
 test('Navigation Test @nav-test', async ({ page }) => {
   // Go to https://syncross.vercel.app/
   await page.goto('https://syncross.vercel.app/');
